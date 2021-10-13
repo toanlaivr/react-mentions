@@ -1,9 +1,9 @@
 {
-  "name": "react-mentions",
-  "version": "0.0.0-development",
+  "name": "vn-react-mentions",
+  "version": "4.3.0",
   "description": "React mentions input",
-  "main": "dist/react-mentions.cjs.js",
-  "module": "dist/react-mentions.esm.js",
+  "main": "dist/vn-react-mentions.cjs.js",
+  "module": "dist/vn-react-mentions.esm.js",
   "files": [
     "dist"
   ],
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/signavio/react-mentions.git"
+    "url": "git+https://github.com/signavio/react-mentions.git"
   },
   "keywords": [
     "react",
@@ -31,7 +31,7 @@
     "safari >= 10",
     "ie >= 11"
   ],
-  "author": "Jan-Felix Schwarz",
+  "author": "Jan-Felix Schwarz & VN",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/signavio/react-mentions/issues"
