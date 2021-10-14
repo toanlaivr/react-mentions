@@ -349,54 +349,54 @@ class MentionsInput extends React.Component {
       return
     }
 
-    const { selectionStart, selectionEnd } = this.state
-    const { value, children } = this.props
+    // const { selectionStart, selectionEnd } = this.state
+    // const { value, children } = this.props
 
-    const config = readConfigFromChildren(children)
+    // const config = readConfigFromChildren(children)
 
-    const markupStartIndex = mapPlainTextIndex(
-      value,
-      config,
-      selectionStart,
-      'START'
-    )
-    const markupEndIndex = mapPlainTextIndex(value, config, selectionEnd, 'END')
+    // const markupStartIndex = mapPlainTextIndex(
+    //   value,
+    //   config,
+    //   selectionStart,
+    //   'START'
+    // )
+    // const markupEndIndex = mapPlainTextIndex(value, config, selectionEnd, 'END')
 
-    const pastedMentions = event.clipboardData.getData('text/react-mentions')
-    const pastedData = event.clipboardData.getData('text/plain')
+    // const pastedMentions = event.clipboardData.getData('text/react-mentions')
+    // const pastedData = event.clipboardData.getData('text/plain')
 
-    const newValue = spliceString(
-      value,
-      markupStartIndex,
-      markupEndIndex,
-      pastedMentions || pastedData
-    ).replace(/\r/g, '')
-    const mentions = getMentions(newValue, config)
+    // const newValue = spliceString(
+    //   value,
+    //   markupStartIndex,
+    //   markupEndIndex,
+    //   pastedMentions || pastedData
+    // ).replace(/\r/g, '')
+    // const mentions = getMentions(newValue, config)
 
-    if(mentions.length > 0) {
-      event.preventDefault();
-      const newPlainTextValue = getPlainText(newValue, config)
+    // if(mentions.length > 0) {
+    //   event.preventDefault();
+    //   const newPlainTextValue = getPlainText(newValue, config)
 
-      const eventMock = { target: { ...event.target, value: newValue } }
+    //   const eventMock = { target: { ...event.target, value: newValue } }
 
-      this.executeOnChange(
-        eventMock,
-        newValue,
-        newPlainTextValue,
-        getMentions(newValue, config)
-      )
+    //   this.executeOnChange(
+    //     eventMock,
+    //     newValue,
+    //     newPlainTextValue,
+    //     getMentions(newValue, config)
+    //   )
 
-      // Move the cursor position to the end of the pasted data
-      const startOfMention = findStartOfMentionInPlainText(
-        value,
-        config,
-        selectionStart
-      )
-      const nextPos =
-        (startOfMention || selectionStart) +
-        getPlainText(pastedMentions || pastedData, config).length
-      this.setSelection(nextPos, nextPos)
-    }
+    //   // Move the cursor position to the end of the pasted data
+    //   const startOfMention = findStartOfMentionInPlainText(
+    //     value,
+    //     config,
+    //     selectionStart
+    //   )
+    //   const nextPos =
+    //     (startOfMention || selectionStart) +
+    //     getPlainText(pastedMentions || pastedData, config).length
+    //   this.setSelection(nextPos, nextPos)
+    // }
   }
 
   saveSelectionToClipboard(event) {
