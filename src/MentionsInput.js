@@ -448,48 +448,48 @@ class MentionsInput extends React.Component {
       return
     }
 
-    const { selectionStart, selectionEnd } = this.state
-    const { children, value } = this.props
+    // const { selectionStart, selectionEnd } = this.state
+    // const { children, value } = this.props
 
-    const config = readConfigFromChildren(children)
-    const mentions = getMentions(value, config)
+    // const config = readConfigFromChildren(children)
+    // const mentions = getMentions(value, config)
 
-    if (mentions.length > 0 && selectionStart !== selectionEnd) {
-      event.preventDefault()
+    // if (mentions.length > 0 && selectionStart !== selectionEnd) {
+    //   event.preventDefault()
 
-      this.saveSelectionToClipboard(event)
+    //   this.saveSelectionToClipboard(event)
 
-      const markupStartIndex = mapPlainTextIndex(
-        value,
-        config,
-        selectionStart,
-        'START'
-      )
-      const markupEndIndex = mapPlainTextIndex(value, config, selectionEnd, 'END')
+    //   const markupStartIndex = mapPlainTextIndex(
+    //     value,
+    //     config,
+    //     selectionStart,
+    //     'START'
+    //   )
+    //   const markupEndIndex = mapPlainTextIndex(value, config, selectionEnd, 'END')
 
-      const newValue = [
-        value.slice(0, markupStartIndex),
-        value.slice(markupEndIndex),
-      ].join('')
-      const newPlainTextValue = getPlainText(newValue, config)
+    //   const newValue = [
+    //     value.slice(0, markupStartIndex),
+    //     value.slice(markupEndIndex),
+    //   ].join('')
+    //   const newPlainTextValue = getPlainText(newValue, config)
 
-      const eventMock = { target: { ...event.target, value: newPlainTextValue } }
+    //   const eventMock = { target: { ...event.target, value: newPlainTextValue } }
 
-      this.executeOnChange(
-        eventMock,
-        newValue,
-        newPlainTextValue,
-        getMentions(value, config)
-      )
+    //   this.executeOnChange(
+    //     eventMock,
+    //     newValue,
+    //     newPlainTextValue,
+    //     getMentions(value, config)
+    //   )
 
-      const startOfMention = findStartOfMentionInPlainText(
-        value,
-        config,
-        selectionStart
-      )
-      const nextPos = startOfMention || selectionStart
-      this.setSelection(nextPos, nextPos)
-    }
+    //   const startOfMention = findStartOfMentionInPlainText(
+    //     value,
+    //     config,
+    //     selectionStart
+    //   )
+    //   const nextPos = startOfMention || selectionStart
+    //   this.setSelection(nextPos, nextPos)
+    // }
   }
 
   // Handle input element's change event
@@ -510,16 +510,17 @@ class MentionsInput extends React.Component {
     let newPlainTextValue = ev.target.value
 
     // Derive the new value to set by applying the local change in the textarea's plain text
-    let newValue = applyChangeToValue(
-      value,
-      newPlainTextValue,
-      {
-        selectionStartBefore: this.state.selectionStart,
-        selectionEndBefore: this.state.selectionEnd,
-        selectionEndAfter: ev.target.selectionEnd,
-      },
-      config
-    )
+    let newValue = newPlainTextValue
+    // let newValue = applyChangeToValue(
+    //   value,
+    //   newPlainTextValue,
+    //   {
+    //     selectionStartBefore: this.state.selectionStart,
+    //     selectionEndBefore: this.state.selectionEnd,
+    //     selectionEndAfter: ev.target.selectionEnd,
+    //   },
+    //   config
+    // )
 
     // In case a mention is deleted, also adjust the new plain text value
     newPlainTextValue = getPlainText(newValue, config)
